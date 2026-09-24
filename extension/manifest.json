@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "PO Strategy — RSI 5s + Martingale",
+  "version": "2.1.0",
+  "description": "RSI 5s confirmé par la mèche + 3 variantes martingale. Multi-paires OTC, payout 90%+.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://*.pocketoption.com/*", "https://pocketoption.com/*"],
+  "action": { "default_popup": "popup.html", "default_title": "PO Strategy" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["https://*.pocketoption.com/*", "https://pocketoption.com/*"],
+    "js": ["strategy.js", "content.js"],
+    "css": ["overlay.css"],
+    "run_at": "document_idle"
+  }],
+  "web_accessible_resources": [{ "resources": ["inpage.js"], "matches": ["https://*.pocketoption.com/*", "https://pocketoption.com/*"] }]
+}
